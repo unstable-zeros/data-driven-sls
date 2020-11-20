@@ -8,14 +8,14 @@ These experiments were run with the following software
 * MOSEK (>= 9.29)
 
 Missing Julia packages can be installed as follows:
-	1. Run `julia` from the terminal to launch the interactive environment
-	2. `using Pkg` imports Julia's built-in package manager
-	3. `Pkg.add("Statistics")` will install Julia's [Statistics](https://docs.julialang.org/en/v1/stdlib/Statistics/) package, for example
+1. Run `julia` from the terminal to launch the interactive environment
+2. `using Pkg` imports Julia's built-in package manager
+3. `Pkg.add("Statistics")` will install Julia's [Statistics](https://docs.julialang.org/en/v1/stdlib/Statistics/) package, for example
 
 
 ## Experiment 1: Bootstrapping
 This experiment is contained in the `L4DC Sample Complexity.ipynb` file. This file contains code that
-1. Generates `N = 10, 20, 30, ...,10000` different `H_L (w)` matrices and computes their average
+1. Generates `N = 10, 20, 30, ...,10000` independent `H_L (w)` matrices and computes their average
 2. Calculates their norm (`opnorm`)
 3. Stores and plots data
 
@@ -23,7 +23,7 @@ Running all of the code blocks (not including time to import and pre-compile pac
 
 ![Hwnorms.png](Hwnorms.png)
 
-The x-axis displays different values of `N` in `log10` scale. The solid blue line is the mean of `opnorm` of `N` different independent `H_L (w)` averaged together, with the `0.05` and `0.95` quantiles shaded. The bootstrap epsilon is the `0.95` quantile, sampled independent from the blue data and drawn in orange.
+The x-axis displays different values of `N` in `log10` scale. The solid blue line is the `opnorm` of `N`  independent `H_L (w)` averaged together, with the `0.05` and `0.95` quantiles shaded. The bootstrap epsilon is the `0.95` quantile, sampled independent from the blue data and drawn in orange.
 
 
 
@@ -51,13 +51,15 @@ Following this naming convention,
 
 Pre-computed plots are available in `lqr-costs.png`, `xnorms.png`, and `unorms.png`.
 
-#### LQR Cost
+_!!!WARNING: The MPC experiment is expected to take 350-700 minutes, dependent on machine!!!_
+
+### LQR Cost
 Shown below are the LQR costs of the optimal, robust bootstrap epsilon, and robust true epsilon controllers in an MPC loop over control horizon `H = 1000` (with `Q = 1e-3 I` , `R = I`, and `sigma = sqrt(0.1)`) for different sample counts `N`. The 1st and 3rd quartiles are shaded for each. The naive (nominal) controller is omitted because it consistently blows up due to instability.
 
 ![lqr-costs.png](lqr-costs.png)
 
 
-#### State and input norms
+### State and input norms
 Shown below are the norms of the states and controls of the system over the MPC loop over different number of samples `N`. Again, we omit the naive controller as it is consistently unstable.
 
 ![xnorms.png](xnorms.png)

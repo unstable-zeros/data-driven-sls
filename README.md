@@ -16,7 +16,7 @@ A README file can be found in the "experiments" folder, where a detailed explana
 
 ## 2022_OJCS_DataDriven-DLMPC
 
-This folder hosts the code needed to reproduce the examples in article [6] and its preprint https://arxiv.org/abs/2112.12229.
+This folder hosts the code needed to reproduce the examples in article [2] and its preprint https://arxiv.org/abs/2112.12229.
 
 The names of the subfolders correspond to the figure's number that they generate. Users must first run the script named `script_[corresponging figure].m`, which will save the data in folder named `results` as a .mat file. Once this is done, users must run the script named `plot_[corresponging figure].m`, located in the same folder where the first script was run. This will produce the desired figure. 
 
